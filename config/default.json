@@ -1,0 +1,13 @@
+{
+    "elasticsearch": {
+        "url":"http://localhost:",
+        "port":"9200",
+        "elasticsearchIndices": {
+            "COMETS": {
+                "index":"comets",
+                "type":"COMETS"
+            }
+        }
+    },
+    "application_serverport":3007
+}
