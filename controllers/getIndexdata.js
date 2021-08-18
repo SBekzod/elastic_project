@@ -51,11 +51,11 @@ exports.getRepeatedFieldIndicesData = async function (req, res, next) {
             index: indexName,
             type: indexType,
             body: {
+                // "size": 0,
                 "aggs": {
                     "count": {
                         "terms": {
-                            "field": "dept.keyword",
-                            "size": 100,
+                            "field": "skills.keyword",
                         }
                     }
                 }
@@ -66,7 +66,7 @@ exports.getRepeatedFieldIndicesData = async function (req, res, next) {
         
     } catch (err) {
         console.trace("ERROR getRepeatedFieldIndicesData: ", err.message);
-        res.send('NO REPEATED DATA')
+        res.send(err.message)
     }
 
 }

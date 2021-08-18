@@ -1,5 +1,4 @@
 const config = require('config');
-const { removeListener } = require('..');
 var elastic_client = require('../db');
 
 const indexName = config.elasticsearch.elasticsearchIndices.COMETS.index;

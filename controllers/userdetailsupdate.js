@@ -13,7 +13,6 @@ exports.updateSingleData = function(req, res, next) {
             doc : {
                 member_id: req.body.member_id,
                 age: req.body.age,
-                dept: req.body.dept,
                 skills: req.body.skills,
                 children: req.body.children
             }
