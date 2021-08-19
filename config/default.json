@@ -6,6 +6,21 @@
             "COMETS": {
                 "index":"comets",
                 "type":"COMETS"
+            },
+            "USERS": {
+                "index":"users",
+                "body" : {
+                    "settings" : {
+                        "number_of_shards" : 2,
+                        "number_of_replicas" : 1
+                    },
+                    "mappings" : {
+                        "properties" : {
+                            "tags" : { "type" : "keyword" },
+                            "updated_at" : { "type" : "date" }
+                        }
+                    }
+                }
             }
         }
     },

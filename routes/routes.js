@@ -5,6 +5,7 @@ const getindicesData = require('../controllers/getIndexdata');
 const insertApi = require('../controllers/registration');
 const updateApi = require('../controllers/userdetailsupdate');
 const deleteApi = require('../controllers/deleteuserdetails');
+const insertOtherApi = require('../controllers/otherIndexActions');
 
 // Connection test
 router.get('/',  (req, res) => {
@@ -35,6 +36,16 @@ router.post('/insert/single/data', (req, res) => {
    insertApi.insertSingleData(req, res);
 });
 
+// Search one field => index comets
+router.post('/search/hash', (req, res) => {
+   getindicesData.getDescriptionDetails(req, res);
+});
+
+// Search multi fiels => index comets
+router.post('/search/multi', (req, res) => {
+   getindicesData.getMultiFieldDetails(req, res);
+});
+
 // Update single data into Elastic-search => indices comets
 router.put('/update/user/data', (req, res) => { 
    updateApi.updateSingleData(req, res);
@@ -52,16 +63,9 @@ router.delete('/delete/:index', (req, res) => {
 
 
 
-// MAPPING AND SETTING FEATURES OF ELASTIC SEARCH
-router.post('/search/hash', (req, res) => {
-   getindicesData.getDescriptionDetails(req, res);
+// MAPPING AND SETTING FEATURES OF ES ::: Insert other single data into Elastic-search directly => indices users
+router.post('/insert_other/single/data', (req, res) => { 
+   insertOtherApi.insertOtherSingleData(req, res);
 });
-
-router.post('/search/multi', (req, res) => {
-   getindicesData.getMultiFieldDetails(req, res);
-});
-
-
-
 
 module.exports = router;

@@ -4,7 +4,7 @@ var elastic_client = require('../db');
 const indexName = config.elasticsearch.elasticsearchIndices.COMETS.index;
 const indexType = config.elasticsearch.elasticsearchIndices.COMETS.type;
 
-exports.insertSingleData = async function(req, res, next) {
+exports.insertSingleData = async function(req, res) {
     try {
         const response = await elastic_client.index({
             index: indexName,
