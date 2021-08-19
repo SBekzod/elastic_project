@@ -13,7 +13,8 @@ exports.insertSingleData = async function(req, res, next) {
                 member_id: req.body.member_id,
                 age: req.body.age,
                 skills: req.body.skills,
-                children: req.body.children
+                children: req.body.children,
+                desc: req.body.desc
             }
           });
             let hits = response;

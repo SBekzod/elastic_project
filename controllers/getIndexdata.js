@@ -1,5 +1,6 @@
 const config = require('config');
 var elastic_client = require('../db');
+const chalk = require('chalk');
 
 const indexName = config.elasticsearch.elasticsearchIndices.COMETS.index;
 const indexType = config.elasticsearch.elasticsearchIndices.COMETS.type;
@@ -15,7 +16,8 @@ exports.getEachIndicesData = async function (req, res, next) {
                     match_all: {}
                 }
             }
-        })
+        }) 
+        console.log(chalk.bold.yellow('ALL DATA:', 'ON PROCESS'));
         var hits = response.hits.hits;
         res.status(200).send(hits);
     } catch (err) {
@@ -51,7 +53,6 @@ exports.getRepeatedFieldIndicesData = async function (req, res, next) {
             index: indexName,
             type: indexType,
             body: {
-                // "size": 0,
                 "aggs": {
                     "count": {
                         "terms": {

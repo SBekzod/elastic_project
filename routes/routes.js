@@ -14,6 +14,7 @@ router.get('/',  (req, res) => {
    });
 });
 
+
 // Get elastic indices data 
 router.get('/find/all/:index', (req, res) => { 
    getindicesData.getEachIndicesData(req, res);
@@ -24,20 +25,15 @@ router.post('/find/single/data', (req, res) => {
    getindicesData.getEachIndicesSingleRecord(req, res);
 });
 
-
 // Get repeated field data from the indices => comets
 router.get('/find/repeated/data', (req, res) => {
    getindicesData.getRepeatedFieldIndicesData(req, res);
 });
 
-
 // Insert single data into Elastic-search directly => indices comets
 router.post('/insert/single/data', (req, res) => { 
    insertApi.insertSingleData(req, res);
 });
-
-
-
 
 // Update single data into Elastic-search => indices comets
 router.put('/update/user/data', (req, res) => { 
@@ -53,5 +49,8 @@ router.delete('/delete/user/data', (req, res) => {
 router.delete('/delete/:index', (req, res) => {
    deleteApi.deleteElasticSearchIndex(req, res);
 });
+
+
+
 
 module.exports = router;
