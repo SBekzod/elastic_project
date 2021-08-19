@@ -51,10 +51,17 @@ router.delete('/delete/:index', (req, res) => {
 });
 
 
+
 // MAPPING AND SETTING FEATURES OF ELASTIC SEARCH
 router.post('/search/hash', (req, res) => {
    getindicesData.getDescriptionDetails(req, res);
 });
+
+router.post('/search/multi', (req, res) => {
+   getindicesData.getMultiFieldDetails(req, res);
+});
+
+
 
 
 module.exports = router;
