@@ -71,3 +71,27 @@ exports.getRepeatedFieldIndicesData = async function (req, res, next) {
     }
 
 }
+
+
+exports.getDescriptionDetails = async function (req, res, next) {
+    try {
+        const response = await elastic_client.search({
+            index: indexName, 
+            type: indexType,
+            body: {
+                query: {
+                    match_phrase_prefix: {
+                        "desc": req.body.desc_text
+                    }
+                }
+            }
+        })
+        var hits = response.hits.hits;
+        res.status(200).send(hits); 
+
+    } catch (err) { 
+        console.trace("ERROR getEachIndicesSingleRecord: ", err.message);
+        res.send(`No dat with that word: ${req.body.desc_text}`);
+    }
+}
+
